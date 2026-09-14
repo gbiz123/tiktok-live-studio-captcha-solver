@@ -1,0 +1,7 @@
+pyproject.toml
+src/tiktok_live_studio_captcha_solver/__init__.py
+src/tiktok_live_studio_captcha_solver.egg-info/PKG-INFO
+src/tiktok_live_studio_captcha_solver.egg-info/SOURCES.txt
+src/tiktok_live_studio_captcha_solver.egg-info/dependency_links.txt
+src/tiktok_live_studio_captcha_solver.egg-info/requires.txt
+src/tiktok_live_studio_captcha_solver.egg-info/top_level.txt
