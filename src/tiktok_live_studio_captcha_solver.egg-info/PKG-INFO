@@ -16,3 +16,6 @@ Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 Requires-Dist: pyautogui
 Requires-Dist: opencv-python
+Requires-Dist: pillow
+Requires-Dist: numpy
+Requires-Dist: pytest
