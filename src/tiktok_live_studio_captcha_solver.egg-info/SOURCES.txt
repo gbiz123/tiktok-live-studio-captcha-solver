@@ -1,6 +1,7 @@
 README.md
 pyproject.toml
 src/tiktok_live_studio_captcha_solver/__init__.py
+src/tiktok_live_studio_captcha_solver/__main__.py
 src/tiktok_live_studio_captcha_solver/api.py
 src/tiktok_live_studio_captcha_solver/captchatype.py
 src/tiktok_live_studio_captcha_solver/exceptions.py
