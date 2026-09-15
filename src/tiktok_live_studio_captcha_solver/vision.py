@@ -58,6 +58,9 @@ def scale_invariant_template_match(
             cv2.TM_CCORR_NORMED,
             mask=mask
         )
+        # Replace positive and negative infinities with safe boundary values (0.0)
+        res[np.isinf(res)] = 0.0
+        res[np.isnan(res)] = 0.0
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         if max_val > best_val:
             best_val = max_val

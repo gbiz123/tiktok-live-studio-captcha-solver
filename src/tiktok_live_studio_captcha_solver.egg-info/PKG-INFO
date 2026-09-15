@@ -21,3 +21,7 @@ Requires-Dist: numpy
 Requires-Dist: pytest
 Requires-Dist: requests
 Requires-Dist: pydantic
+
+# Prerequisites
+- Tkinter installed on system
+- gnome-screenshot installed if using Linux
