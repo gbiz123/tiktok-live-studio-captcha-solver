@@ -1,3 +1,4 @@
+from tiktok_live_studio_captcha_solver.exceptions import TemplateMatchNotFound
 from tiktok_live_studio_captcha_solver.image_io import pil_to_b64_string
 from .system import tkinter_is_installed
 
@@ -42,9 +43,22 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
 
 def solve_loop(api_client: ApiClient):
     while True:
-        pass
+        for captcha_type in CaptchaType:
+            try:
+                match(captcha_type):
+                    case CaptchaType.SHAPES:
+                        solve_shapes_captcha(api_client)
+            except TemplateMatchNotFound as e:
+                LOGGER.debug(f"{captcha_type} captcha not found")
+            except Exception as e:
+                LOGGER.error(
+                    "unexpected exception occurred during solve loop: " + str(e),
+                    exc_info=True,
+                    stack_info=True
+                )
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
     api_key = prompt_api_key()
     api_client = ApiClient(api_key)
-    solve_loop()
+    solve_loop(api_client)
