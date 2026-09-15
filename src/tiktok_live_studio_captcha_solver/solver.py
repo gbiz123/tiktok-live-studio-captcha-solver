@@ -1,3 +1,4 @@
+from tiktok_live_studio_captcha_solver.image_io import pil_to_b64_string
 from .system import tkinter_is_installed
 
 if __name__ == "__main__":
@@ -35,7 +36,9 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
         )
     )
     cropped.save("./images/extracted.png")
-
+    img_b64 = pil_to_b64_string(cropped)
+    resp = api_client.shapes(img_b64)
+    LOGGER.debug("got response for shapes captcha: " + resp.__repr__())
 
 def solve_loop(api_client: ApiClient):
     while True:
