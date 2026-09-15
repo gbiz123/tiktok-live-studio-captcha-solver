@@ -94,8 +94,7 @@ def find_shapes_captcha_box(
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
-    cv2.imwrite("./images/test_shapes_captcha_match.png", mat)
-    cv2.imwrite("./images/test_shapes_template.png", SHAPES_TEMPLATE)
     box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
     LOGGER.debug("found shapes captcha box at " + box.__repr__())
     return box
+
