@@ -3,3 +3,5 @@ opencv-python
 pillow
 numpy
 pytest
+requests
+pydantic

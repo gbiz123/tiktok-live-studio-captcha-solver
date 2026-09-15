@@ -30,7 +30,9 @@ dependencies = [
   "opencv-python",
   "pillow",
   "numpy",
-  "pytest"
+  "pytest",
+  "requests",
+  "pydantic"
 ]
 
 [project.urls]

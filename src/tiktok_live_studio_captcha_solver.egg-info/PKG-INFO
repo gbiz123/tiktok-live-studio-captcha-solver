@@ -19,3 +19,5 @@ Requires-Dist: opencv-python
 Requires-Dist: pillow
 Requires-Dist: numpy
 Requires-Dist: pytest
+Requires-Dist: requests
+Requires-Dist: pydantic
