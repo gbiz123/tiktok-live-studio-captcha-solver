@@ -61,6 +61,9 @@ def scale_invariant_template_match(
             cv2.TM_CCORR_NORMED,
             mask=mask
         )
+        # Replace positive and negative infinities with safe boundary values (0.0)
+        res[np.isinf(res)] = 0.0
+        res[np.isnan(res)] = 0.0
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         if max_val > best_val:
             best_val = max_val
@@ -94,8 +97,7 @@ def find_shapes_captcha_box(
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
-    cv2.imwrite("./images/test_shapes_captcha_match.png", mat)
-    cv2.imwrite("./images/test_shapes_template.png", SHAPES_TEMPLATE)
     box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
     LOGGER.debug("found shapes captcha box at " + box.__repr__())
     return box
+
