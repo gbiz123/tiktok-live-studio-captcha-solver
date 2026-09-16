@@ -78,6 +78,7 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
     )
     LOGGER.debug("clicked second shape")
     # Click confirm button
+    time.sleep(0.5)
     pyautogui.click(
         shapes_captcha_box.left + (shapes_captcha_box.width / 2),
         shapes_captcha_box.top + (shapes_captcha_box.height - 15)
