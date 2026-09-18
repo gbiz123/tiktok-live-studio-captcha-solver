@@ -1,6 +1,6 @@
 import os
 import logging
-from PIL import Image
+from PIL import Image, ImageDraw
 import pyautogui
 import pyscreeze
 
@@ -230,3 +230,36 @@ def extract_puzzle_canvas(
     pil_image = Image.fromarray(submat)
     LOGGER.debug("extracted puzzle canvas from image")
     return pil_image
+
+def extract_piece_from_puzzle(
+    puzzle_image: Image.Image
+) -> Image.Image:
+    cropped = puzzle_image.crop(
+        (
+            10,
+            10,
+            puzzle_image.width * 0.2,
+            puzzle_image.height - 10
+        )
+    )
+    LOGGER.debug("cropped PIL image")
+    return cropped
+
+def draw_over_piece(
+    puzzle_image: Image.Image
+) -> Image.Image:
+    puzzle_copy = puzzle_image.copy()
+    draw = ImageDraw.Draw(puzzle_copy)
+    draw.ellipse(
+        (
+            0,
+            0,
+            puzzle_copy.width * 0.25,
+            puzzle_copy.height 
+        ),
+        fill="black",
+        outline="black",
+        width=1
+    )
+    LOGGER.debug("drew rectangle over piece")
+    return puzzle_copy

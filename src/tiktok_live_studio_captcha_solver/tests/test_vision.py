@@ -1,6 +1,6 @@
 from PIL import Image
 
-from ..vision import extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box
+from ..vision import draw_over_piece, extract_piece_from_puzzle, extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box
 
 def test_find_shapes_captcha_box():
     img = Image.open("./images/image1.png") 
@@ -28,4 +28,14 @@ def test_extract_puzzle_canvas():
     canvas = extract_puzzle_canvas(img)
     canvas.save("./images/test_extract_canvas.png")
 
+def test_extract_piece_from_puzzle():
+    img = Image.open("./images/puzzle_slide.png")
+    canvas = extract_puzzle_canvas(img)
+    piece = extract_piece_from_puzzle(canvas)
+    piece.save("./images/test_extract_piece.png")
 
+def test_draw_over_piece():
+    img = Image.open("./images/puzzle_slide.png")
+    canvas = extract_puzzle_canvas(img)
+    drawn = draw_over_piece(canvas)
+    drawn.save("./images/test_draw_rectangle.png")
