@@ -1,9 +1,11 @@
 import os
 import logging
 from PIL import Image
+import pyautogui
+import pyscreeze
 
 import cv2
-from pyscreeze import Box
+from pyscreeze import Box, screenshot
 import numpy as np
 
 from .exceptions import TemplateMatchNotFound
@@ -20,6 +22,8 @@ LOGGER = logging.getLogger(__name__)
 MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
 SHAPES_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/shapes_template.png")
 SHAPES_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/shapes_template_mask.png")
+PUZZLE_CANVAS_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/puzzle_canvas_template.png")
+PUZZLE_CANVAS_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/puzzle_canvas_template_mask.png")
 PUZZLE_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/puzzle_template.png")
 PUZZLE_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/puzzle_template_mask.png")
 SLIDE_BUTTON_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/slide_button_template.png")
@@ -32,6 +36,23 @@ SLIDE_BUTTON_TEMPLATE_BASE = cv2.imread(
 if SLIDE_BUTTON_TEMPLATE_BASE is None:
     raise ValueError("Could not load slide button template sample image at " + SLIDE_BUTTON_TEMPLATE_PATH)
 SLIDE_BUTTON_TEMPLATE = sobel(SLIDE_BUTTON_TEMPLATE_BASE)
+
+# Load puzzle canvas template
+PUZZLE_CANVAS_TEMPLATE_BASE = cv2.imread(
+    PUZZLE_CANVAS_TEMPLATE_PATH,
+    cv2.IMREAD_GRAYSCALE
+)
+if PUZZLE_CANVAS_TEMPLATE_BASE is None:
+    raise ValueError("Could not load puzzle canvas captcha sample image at " + PUZZLE_CANVAS_TEMPLATE_PATH)
+PUZZLE_CANVAS_TEMPLATE = sobel(PUZZLE_CANVAS_TEMPLATE_BASE)
+
+# Load puzzle canvas template mask
+PUZZLE_CANVAS_TEMPLATE_MASK = cv2.imread(
+    PUZZLE_CANVAS_TEMPLATE_MASK_PATH,
+    cv2.IMREAD_GRAYSCALE
+)
+if PUZZLE_CANVAS_TEMPLATE_MASK is None:
+    raise ValueError("Could not load puzzle canvas captcha template mask at " + PUZZLE_CANVAS_TEMPLATE_PATH)
 
 # Load puzzle template
 PUZZLE_TEMPLATE_BASE = cv2.imread(
@@ -107,11 +128,11 @@ def scale_invariant_template_match(
 
 
 def find_shapes_captcha_box(
-    image: Image.Image
+    screenshot: Image.Image
 ) -> Box:
     """Find the area of the shapes captcha image as PIL image as a pyscreeze box"""
 
-    mat = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
+    mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
 
     res = scale_invariant_template_match(
@@ -131,11 +152,11 @@ def find_shapes_captcha_box(
     return box
 
 def find_puzzle_captcha_box(
-    image: Image.Image
+    screenshot: Image.Image
 ) -> Box:
     """Find the area of the puzzle captcha image as PIL image as a pyscreeze box"""
 
-    mat = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
+    mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
 
     res = scale_invariant_template_match(
@@ -150,16 +171,17 @@ def find_puzzle_captcha_box(
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
+    # cv2.imwrite("images/test_extracted_captcha_box.png", mat)
     box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
     LOGGER.debug("found puzzle captcha box at " + box.__repr__())
     return box
 
 def find_slide_button_box(
-    image: Image.Image
+    screenshot: Image.Image
 ) -> Box:
     """Find the area of the slide arrow button image as PIL image as a pyscreeze box"""
 
-    mat = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
+    mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
 
     res = scale_invariant_template_match(
@@ -173,7 +195,38 @@ def find_slide_button_box(
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
+    # cv2.imwrite("images/test_extracted_slide_button.png", mat)
     box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
     LOGGER.debug("found slide button box at " + box.__repr__())
     return box
 
+def extract_puzzle_canvas(
+    screenshot: Image.Image,
+) -> Image.Image:
+    """Extract the puzzle canvas image itself from within the 
+    puzzle captcha box.
+
+    args:
+        screenshot: PIL image of the entire screen
+        puzzle_captcha_box: Box containing the bounds of the entire puzzle captcha (extracted with find_puzzle_captcha_box)
+    """
+    mat = np.array(screenshot)
+    mat_sobel = cv2.cvtColor(sobel(mat), cv2.COLOR_RGB2GRAY)
+
+    res = scale_invariant_template_match(
+        mat_sobel,
+        PUZZLE_CANVAS_TEMPLATE,
+        mask=PUZZLE_CANVAS_TEMPLATE_MASK,
+        threshold=0.9
+    )
+
+    w, h = PUZZLE_CANVAS_TEMPLATE.shape[::-1]
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    submat = mat[
+        max_loc[1]:max_loc[1] + h,
+        max_loc[0]:max_loc[0] + w
+    ].copy()
+    top_left = max_loc
+    pil_image = Image.fromarray(submat)
+    LOGGER.debug("extracted puzzle canvas from image")
+    return pil_image
