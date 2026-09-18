@@ -18,25 +18,54 @@ def sobel(img: cv2.typing.MatLike) -> cv2.typing.MatLike:
 LOGGER = logging.getLogger(__name__)
 
 MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
-SHAPES_CAPTCHA_SAMPLE_PATH = os.path.join(MODULE_DIR, "resources/shapes_template.png")
+SHAPES_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/shapes_template.png")
 SHAPES_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/shapes_template_mask.png")
+PUZZLE_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/puzzle_template.png")
+PUZZLE_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/puzzle_template_mask.png")
+SLIDE_BUTTON_TEMPLATE_PATH = os.path.join(MODULE_DIR, "resources/slide_button_template.png")
 
-SHAPES_TEMPLATE_BASE = cv2.imread(
-    SHAPES_CAPTCHA_SAMPLE_PATH,
+# Load slide button template
+SLIDE_BUTTON_TEMPLATE_BASE = cv2.imread(
+    SLIDE_BUTTON_TEMPLATE_PATH,
     cv2.IMREAD_GRAYSCALE
 )
+if SLIDE_BUTTON_TEMPLATE_BASE is None:
+    raise ValueError("Could not load slide button template sample image at " + SLIDE_BUTTON_TEMPLATE_PATH)
+SLIDE_BUTTON_TEMPLATE = sobel(SLIDE_BUTTON_TEMPLATE_BASE)
 
+# Load puzzle template
+PUZZLE_TEMPLATE_BASE = cv2.imread(
+    PUZZLE_TEMPLATE_PATH,
+    cv2.IMREAD_GRAYSCALE
+)
+if PUZZLE_TEMPLATE_BASE is None:
+    raise ValueError("Could not load puzzle captcha sample image at " + PUZZLE_TEMPLATE_PATH)
+PUZZLE_TEMPLATE = sobel(PUZZLE_TEMPLATE_BASE)
+
+# Load puzzle template mask
+PUZZLE_TEMPLATE_MASK = cv2.imread(
+    PUZZLE_TEMPLATE_MASK_PATH,
+    cv2.IMREAD_GRAYSCALE
+)
+if PUZZLE_TEMPLATE_MASK is None:
+    raise ValueError("Could not load puzzle captcha template mask at " + PUZZLE_TEMPLATE_PATH)
+
+# Load shapes template
+SHAPES_TEMPLATE_BASE = cv2.imread(
+    SHAPES_TEMPLATE_PATH,
+    cv2.IMREAD_GRAYSCALE
+)
 if SHAPES_TEMPLATE_BASE is None:
-    raise ValueError("Could not load shapes captcha sample image at " + SHAPES_CAPTCHA_SAMPLE_PATH)
+    raise ValueError("Could not load shapes captcha sample image at " + SHAPES_TEMPLATE_PATH)
 SHAPES_TEMPLATE = sobel(SHAPES_TEMPLATE_BASE)
 
+# Load shapes template mask
 SHAPES_TEMPLATE_MASK = cv2.imread(
     SHAPES_TEMPLATE_MASK_PATH,
     cv2.IMREAD_GRAYSCALE
 )
-
 if SHAPES_TEMPLATE_MASK is None:
-    raise ValueError("Could not load shapes captcha template mask at " + SHAPES_CAPTCHA_SAMPLE_PATH)
+    raise ValueError("Could not load shapes captcha template mask at " + SHAPES_TEMPLATE_PATH)
 
 def scale_invariant_template_match(
     mat: cv2.typing.MatLike,
@@ -99,5 +128,52 @@ def find_shapes_captcha_box(
     _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
     box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
     LOGGER.debug("found shapes captcha box at " + box.__repr__())
+    return box
+
+def find_puzzle_captcha_box(
+    image: Image.Image
+) -> Box:
+    """Find the area of the puzzle captcha image as PIL image as a pyscreeze box"""
+
+    mat = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
+    mat = sobel(mat)
+
+    res = scale_invariant_template_match(
+        mat,
+        PUZZLE_TEMPLATE,
+        mask=PUZZLE_TEMPLATE_MASK,
+        threshold=0.9
+    )
+
+    w, h = PUZZLE_TEMPLATE.shape[::-1]
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    top_left = max_loc
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
+    box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
+    LOGGER.debug("found puzzle captcha box at " + box.__repr__())
+    return box
+
+def find_slide_button_box(
+    image: Image.Image
+) -> Box:
+    """Find the area of the slide arrow button image as PIL image as a pyscreeze box"""
+
+    mat = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2GRAY)
+    mat = sobel(mat)
+
+    res = scale_invariant_template_match(
+        mat,
+        SLIDE_BUTTON_TEMPLATE,
+        threshold=0.9
+    )
+
+    w, h = SLIDE_BUTTON_TEMPLATE.shape[::-1]
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    top_left = max_loc
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    _ = cv2.rectangle(mat ,top_left, bottom_right, 255, 2)
+    box = Box(left=top_left[0], top=top_left[1], width=w, height=h )
+    LOGGER.debug("found slide button box at " + box.__repr__())
     return box
 

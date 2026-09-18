@@ -43,6 +43,9 @@ def click_proportional_point_inside_area(
     pyautogui.click(x_loc, y_loc)
     LOGGER.debug(f"clicked at {x_loc}, {y_loc}")
 
+def solve_puzzle_captcha(api_client: ApiClient) -> None:
+    pass
+
 def solve_shapes_captcha(api_client: ApiClient) -> None:
     screenshot = pyautogui.screenshot()
     shapes_captcha_box = find_shapes_captcha_box(screenshot)
@@ -93,6 +96,8 @@ def solve_loop(api_client: ApiClient):
                 match(captcha_type):
                     case CaptchaType.SHAPES:
                         solve_shapes_captcha(api_client)
+                    case CaptchaType.PUZZLE:
+                        solve_puzzle_captcha(api_client)
             except TemplateMatchNotFound as e:
                 LOGGER.debug(f"{captcha_type} captcha not found")
             except Exception as e:
