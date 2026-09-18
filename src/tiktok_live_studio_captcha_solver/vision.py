@@ -105,19 +105,22 @@ def scale_invariant_template_match(
         resized_template = cv2.resize(template, (int(width*scale), int(height*scale)))
         if mask is not None:
             mask = cv2.resize(mask, (int(width*scale), int(height*scale)))
-        res = cv2.matchTemplate(
-            mat,
-            resized_template,
-            cv2.TM_CCORR_NORMED,
-            mask=mask
-        )
-        # Replace positive and negative infinities with safe boundary values (0.0)
-        res[np.isinf(res)] = 0.0
-        res[np.isnan(res)] = 0.0
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        if max_val > best_val:
-            best_val = max_val
-            best_res = res
+        try:
+            res = cv2.matchTemplate(
+                mat,
+                resized_template,
+                cv2.TM_CCORR_NORMED,
+                mask=mask
+            )
+            # Replace positive and negative infinities with safe boundary values (0.0)
+            res[np.isinf(res)] = 0.0
+            res[np.isnan(res)] = 0.0
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+            if max_val > best_val:
+                best_val = max_val
+                best_res = res
+        except cv2.error as e:
+            LOGGER.debug(f"failed template match at scale {scale} due to opencv error - {str(e)}")
     if best_res is None:
         raise ValueError("Could not find best result for scale invariant template match")
     if threshold is not None \

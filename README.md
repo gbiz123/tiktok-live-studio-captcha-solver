@@ -7,6 +7,10 @@ Now, you can go away from keyboard for extended periods of time without having t
 - gnome-screenshot installed if using Linux
 - An API key from SadCaptcha.com
 
+## Dual-monitor setup
+This tool uses `pyautogui`, which currently only supports single-monitor setups.
+If you have two or monitors, this tool will not work unless you adjust your setup to only use one monitor.
+
 ## Installation
 `pip install tiktok-live-studio-captcha-solver`
 
