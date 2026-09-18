@@ -73,6 +73,8 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
     start_y = button.top  + (button.height / 2)
     end_x = start_x + distance
     pyautogui.moveTo(start_x, start_y)
+    time.sleep(0.2)
+    pyautogui.mouseDown(start_x, start_y)
     time.sleep(0.5)
     overshoot = 15
     for i in range(0, distance + overshoot, 5):
@@ -82,9 +84,9 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
             pyautogui.moveTo(start_x + i + x_adjust, start_y + y_adjust)
     for i in range(0, overshoot, 3):
         pyautogui.moveTo(end_x + overshoot - i, start_y)
+    pyautogui.mouseUp(end_x, start_y)
     LOGGER.info("solved puzzle captcha")
     time.sleep(5)
-
 
 
 def solve_shapes_captcha(api_client: ApiClient) -> None:
