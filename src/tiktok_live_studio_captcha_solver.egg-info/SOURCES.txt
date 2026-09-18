@@ -13,8 +13,12 @@ src/tiktok_live_studio_captcha_solver/vision.py
 src/tiktok_live_studio_captcha_solver.egg-info/PKG-INFO
 src/tiktok_live_studio_captcha_solver.egg-info/SOURCES.txt
 src/tiktok_live_studio_captcha_solver.egg-info/dependency_links.txt
-src/tiktok_live_studio_captcha_solver.egg-info/requires.txt
 src/tiktok_live_studio_captcha_solver.egg-info/top_level.txt
+src/tiktok_live_studio_captcha_solver/resources/__init__.py
+src/tiktok_live_studio_captcha_solver/resources/confirm.png
+src/tiktok_live_studio_captcha_solver/resources/shapes_captcha_sample.png
+src/tiktok_live_studio_captcha_solver/resources/shapes_template.png
+src/tiktok_live_studio_captcha_solver/resources/shapes_template_mask.png
 src/tiktok_live_studio_captcha_solver/tests/__init__.py
 src/tiktok_live_studio_captcha_solver/tests/test_image_io.py
 src/tiktok_live_studio_captcha_solver/tests/test_solver.py

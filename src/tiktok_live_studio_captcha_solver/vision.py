@@ -1,3 +1,4 @@
+import os
 import logging
 from PIL import Image
 
@@ -15,8 +16,10 @@ def sobel(img: cv2.typing.MatLike) -> cv2.typing.MatLike:
     return sobel_8bit
 
 LOGGER = logging.getLogger(__name__)
-SHAPES_CAPTCHA_SAMPLE_PATH = "./src/tiktok_live_studio_captcha_solver/resources/shapes_template.png"
-SHAPES_TEMPLATE_MASK_PATH = "./src/tiktok_live_studio_captcha_solver/resources/shapes_template_mask.png"
+
+MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+SHAPES_CAPTCHA_SAMPLE_PATH = os.path.join(MODULE_DIR, "resources/shapes_template.png")
+SHAPES_TEMPLATE_MASK_PATH = os.path.join(MODULE_DIR, "resources/shapes_template_mask.png")
 
 SHAPES_TEMPLATE_BASE = cv2.imread(
     SHAPES_CAPTCHA_SAMPLE_PATH,
