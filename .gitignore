@@ -1,2 +1,2 @@
 venv/**
-./tiktok-captcha-solver-logs/images/**
+tiktok-captcha-solver-logs/images/**
