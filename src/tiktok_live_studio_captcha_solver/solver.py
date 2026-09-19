@@ -2,6 +2,8 @@ import math
 import random
 import time
 
+from tiktok_live_studio_captcha_solver.logs import log_image
+
 from .exceptions import TemplateMatchNotFound
 from .image_io import pil_to_b64_string
 from .system import tkinter_is_installed
@@ -47,6 +49,7 @@ def click_proportional_point_inside_area(
 
 def solve_puzzle_captcha(api_client: ApiClient) -> None:
     screenshot = pyautogui.screenshot()
+    log_image(screenshot, "screenshot.png")
     puzzle_captcha_box = find_puzzle_captcha_box(screenshot)
     LOGGER.info("puzzle captcha detected")
     cropped_screenshot = screenshot.crop(
@@ -57,7 +60,7 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
             puzzle_captcha_box.top + puzzle_captcha_box.height
         )
     )
-    cropped_screenshot.save("cropped.png")
+    log_image(cropped_screenshot, "cropped-screenshot.png")
     puzzle_canvas = extract_puzzle_canvas(cropped_screenshot)
     piece = extract_piece_from_puzzle(puzzle_canvas)
     puzzle_modified = draw_over_piece(puzzle_canvas)
@@ -91,6 +94,7 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
 
 def solve_shapes_captcha(api_client: ApiClient) -> None:
     screenshot = pyautogui.screenshot()
+    log_image(screenshot, "screenshot.png")
     shapes_captcha_box = find_shapes_captcha_box(screenshot)
     LOGGER.info("shapes captcha detected")
     cropped_screenshot = screenshot.crop(
@@ -101,6 +105,7 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
             shapes_captcha_box.top + shapes_captcha_box.height
         )
     )
+    log_image(cropped_screenshot, "cropped-screenshot.png")
     img_b64 = pil_to_b64_string(cropped_screenshot)
     resp = api_client.shapes(img_b64)
     LOGGER.info("got response for shapes captcha: " + resp.__repr__())
