@@ -25,3 +25,29 @@ DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not fo
 DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:12:09.864701-screenshot.png
 DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
 DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:12:15.806645-screenshot.png
+DEBUG:tiktok_live_studio_captcha_solver.logs:log directories already exist
+DEBUG:PIL.Image:Importing PngImagePlugin
+DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:14:52.536795-screenshot.png
+DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.48228201270103455, threshold 0.9)
+DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
+DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:14:59.799581-screenshot.png
+DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.5253141522407532, threshold 0.9)
+DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
+DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:15:04.821530-screenshot.png
+DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.48228201270103455, threshold 0.9)
+DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
+2026-09-19 17:16:34 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-19 17:16:34 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-09-19 17:16:34 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:34.665462-screenshot.png
+2026-09-19 17:16:41 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.47406765818595886, threshold 0.9)
+2026-09-19 17:16:41 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-19 17:16:42 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:41.975923-screenshot.png
+2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.492563396692276, threshold 0.9)
+2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
+2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:47.836033-screenshot.png
+2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.47142061591148376, threshold 0.9)
+2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:55.396670-screenshot.png
+2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.5253141522407532, threshold 0.9)
+2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
+2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:17:01.580807-screenshot.png

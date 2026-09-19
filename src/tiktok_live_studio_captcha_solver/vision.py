@@ -122,10 +122,12 @@ def scale_invariant_template_match(
         except cv2.error as e:
             LOGGER.debug(f"failed template match at scale {scale} due to opencv error - {str(e)}")
     if best_res is None:
-        raise ValueError("Could not find best result for scale invariant template match")
+        raise ValueError("Could not find best result for scale invariant template match - best_res was None")
     if threshold is not None \
             and best_val < threshold:
-        raise TemplateMatchNotFound(f"Could not find template on image (confidence was {best_val}, threshold {threshold})")
+        msg = f"Could not find template on image (confidence was {best_val}, threshold {threshold})"
+        LOGGER.debug(msg)
+        raise TemplateMatchNotFound(msg)
     LOGGER.debug("found best matching location for shapes template, with confidence " + str(best_val))
     return best_res
 

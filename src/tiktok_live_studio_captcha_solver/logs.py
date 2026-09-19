@@ -11,7 +11,9 @@ IS_LOGGING_IMAGES = bool(os.environ.get("LOG_IMAGES"))
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename=os.path.join(LOGS_DIR, "ttls-captcha-solver.log")
+    filename=os.path.join(LOGS_DIR, "ttls-captcha-solver.log"),
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
 )
 
 def initialize_log_dir():
