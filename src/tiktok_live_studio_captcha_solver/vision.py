@@ -91,7 +91,7 @@ if SHAPES_TEMPLATE_MASK is None:
 def scale_invariant_template_match(
     mat: cv2.typing.MatLike,
     template: cv2.typing.MatLike,
-    scale_factor: float = 0.1,
+    scale_factor: float = 0.3,
     scale_step: float = 0.01,
     mask: cv2.typing.MatLike | None = None,
     threshold: float | None = None
