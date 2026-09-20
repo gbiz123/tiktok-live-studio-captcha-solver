@@ -8,7 +8,14 @@ import cv2
 from pyscreeze import Box, screenshot
 import numpy as np
 
+from tiktok_live_studio_captcha_solver.logs import log_image
+
 from .exceptions import TemplateMatchNotFound
+
+def binary_thresh(mat: cv2.typing.MatLike) -> cv2.typing.MatLike:
+    _, thresh = cv2.threshold(mat, 10, 255, cv2.THRESH_BINARY, dst=mat)
+    LOGGER.debug("applied binary thresholding")
+    return thresh
 
 def sobel(img: cv2.typing.MatLike) -> cv2.typing.MatLike:
     sobelx = cv2.Sobel(src=img, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=3)
@@ -88,29 +95,41 @@ SHAPES_TEMPLATE_MASK = cv2.imread(
 if SHAPES_TEMPLATE_MASK is None:
     raise ValueError("Could not load shapes captcha template mask at " + SHAPES_TEMPLATE_PATH)
 
+log_image(Image.fromarray(SHAPES_TEMPLATE_MASK), f"shapes-template-mask.png")
+log_image(Image.fromarray(SHAPES_TEMPLATE), f"shapes-template.png")
+log_image(Image.fromarray(PUZZLE_TEMPLATE_MASK), f"puzzle-template-mask.png")
+log_image(Image.fromarray(PUZZLE_TEMPLATE), f"puzzle-template.png")
+log_image(Image.fromarray(PUZZLE_CANVAS_TEMPLATE_MASK), f"puzzle-template-mask.png")
+log_image(Image.fromarray(PUZZLE_CANVAS_TEMPLATE), f"puzzle-canvas-template.png")
+
 def scale_invariant_template_match(
     mat: cv2.typing.MatLike,
     template: cv2.typing.MatLike,
-    scale_factor: float = 0.3,
+    scale_factor: float = 0.5,
     scale_step: float = 0.01,
     mask: cv2.typing.MatLike | None = None,
     threshold: float | None = None
-) -> cv2.typing.MatLike:
+) -> tuple[cv2.typing.MatLike, float]:
+    """Perform scale invariant template matching returning (mat, scale) tuple"""
     start = 1.0 - scale_factor
+    start = 1.0
     end = 1.0 + scale_factor
     best_val = -1
     best_res = None
+    best_scale = -1
     for scale in np.arange(start, end, scale_step):
         height, width = template.shape[0:2]
         resized_template = cv2.resize(template, (int(width*scale), int(height*scale)))
         if mask is not None:
-            mask = cv2.resize(mask, (int(width*scale), int(height*scale)))
+            resized_mask = cv2.resize(mask, (int(width*scale), int(height*scale)))
+        else:
+            resized_mask = None
         try:
             res = cv2.matchTemplate(
                 mat,
                 resized_template,
                 cv2.TM_CCORR_NORMED,
-                mask=mask
+                mask=resized_mask
             )
             # Replace positive and negative infinities with safe boundary values (0.0)
             res[np.isinf(res)] = 0.0
@@ -119,6 +138,7 @@ def scale_invariant_template_match(
             if max_val > best_val:
                 best_val = max_val
                 best_res = res
+                best_scale = scale
         except cv2.error as e:
             LOGGER.debug(f"failed template match at scale {scale} due to opencv error - {str(e)}")
     if best_res is None:
@@ -128,8 +148,8 @@ def scale_invariant_template_match(
         msg = f"Could not find template on image (confidence was {best_val}, threshold {threshold})"
         LOGGER.debug(msg)
         raise TemplateMatchNotFound(msg)
-    LOGGER.debug("found best matching location for shapes template, with confidence " + str(best_val))
-    return best_res
+    LOGGER.debug("found best matching location for template, with confidence " + str(best_val))
+    return best_res, best_scale
 
 
 def find_shapes_captcha_box(
@@ -139,15 +159,19 @@ def find_shapes_captcha_box(
 
     mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
+    # mat = binary_thresh(mat)
+    log_image(Image.fromarray(mat), "screenshot-processed.png")
 
-    res = scale_invariant_template_match(
+    res, scale = scale_invariant_template_match(
         mat,
         SHAPES_TEMPLATE,
         mask=SHAPES_TEMPLATE_MASK,
-        threshold=0.9
+        threshold=0.65
     )
 
     w, h = SHAPES_TEMPLATE.shape[::-1]
+    w = int(w * scale)
+    h = int(h * scale)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
@@ -163,8 +187,10 @@ def find_puzzle_captcha_box(
 
     mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
+    # mat = binary_thresh(mat)
+    log_image(Image.fromarray(mat), "screenshot-processed.png")
 
-    res = scale_invariant_template_match(
+    res, scale = scale_invariant_template_match(
         mat,
         PUZZLE_TEMPLATE,
         mask=PUZZLE_TEMPLATE_MASK,
@@ -172,6 +198,8 @@ def find_puzzle_captcha_box(
     )
 
     w, h = PUZZLE_TEMPLATE.shape[::-1]
+    w = int(w * scale)
+    h = int(h * scale)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
@@ -188,14 +216,17 @@ def find_slide_button_box(
 
     mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
     mat = sobel(mat)
+    log_image(Image.fromarray(mat), "screenshot-sobel.png")
 
-    res = scale_invariant_template_match(
+    res, scale = scale_invariant_template_match(
         mat,
         SLIDE_BUTTON_TEMPLATE,
         threshold=0.9
     )
 
     w, h = SLIDE_BUTTON_TEMPLATE.shape[::-1]
+    w = int(w * scale)
+    h = int(h * scale)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
@@ -218,7 +249,7 @@ def extract_puzzle_canvas(
     mat = np.array(screenshot)
     mat_sobel = cv2.cvtColor(sobel(mat), cv2.COLOR_RGB2GRAY)
 
-    res = scale_invariant_template_match(
+    res, scale = scale_invariant_template_match(
         mat_sobel,
         PUZZLE_CANVAS_TEMPLATE,
         mask=PUZZLE_CANVAS_TEMPLATE_MASK,
@@ -226,6 +257,8 @@ def extract_puzzle_canvas(
     )
 
     w, h = PUZZLE_CANVAS_TEMPLATE.shape[::-1]
+    w = int(w * scale)
+    h = int(h * scale)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     submat = mat[
         max_loc[1]:max_loc[1] + h,

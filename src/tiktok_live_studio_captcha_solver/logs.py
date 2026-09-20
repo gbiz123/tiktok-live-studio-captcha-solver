@@ -26,7 +26,9 @@ def initialize_log_dir():
 
 def log_image(image: Image.Image, filename: str) -> None:
     if IS_LOGGING_IMAGES:
-        new_filename = datetime.now().isoformat() + "-" + filename
+        timestamp = datetime.now().isoformat().replace(":", "-").replace(".", "-")
+        name, extension = filename.split(".")
+        new_filename = name + "_" + timestamp + "." + extension
         image.save(os.path.join(IMAGE_LOGS_DIR, new_filename))
         LOGGER.debug("saved image to " + new_filename)
     else:

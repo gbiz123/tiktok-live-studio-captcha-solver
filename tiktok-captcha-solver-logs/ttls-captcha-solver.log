@@ -1,53 +1,111 @@
-DEBUG:tiktok_live_studio_captcha_solver.logs:log directories already exist
-DEBUG:PIL.Image:Importing PngImagePlugin
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:10:51.630608-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:10:58.913016-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:05.029378-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:12.742915-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:18.772174-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:26.804634-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:33.152712-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:41.275727-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:47.884636-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:11:56.385137-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:12:02.370268-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:12:09.864701-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:12:15.806645-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.logs:log directories already exist
-DEBUG:PIL.Image:Importing PngImagePlugin
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:14:52.536795-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.48228201270103455, threshold 0.9)
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:14:59.799581-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.5253141522407532, threshold 0.9)
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.SHAPES captcha not found
-DEBUG:tiktok_live_studio_captcha_solver.logs:saved image to 2026-09-19T17:15:04.821530-screenshot.png
-DEBUG:tiktok_live_studio_captcha_solver.vision:Could not find template on image (confidence was 0.48228201270103455, threshold 0.9)
-DEBUG:tiktok_live_studio_captcha_solver.solver:CaptchaType.PUZZLE captcha not found
-2026-09-19 17:16:34 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
-2026-09-19 17:16:34 | DEBUG    | PIL.Image | Importing PngImagePlugin
-2026-09-19 17:16:34 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:34.665462-screenshot.png
-2026-09-19 17:16:41 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.47406765818595886, threshold 0.9)
-2026-09-19 17:16:41 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
-2026-09-19 17:16:42 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:41.975923-screenshot.png
-2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.492563396692276, threshold 0.9)
-2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
-2026-09-19 17:16:47 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:47.836033-screenshot.png
-2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.47142061591148376, threshold 0.9)
-2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
-2026-09-19 17:16:55 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:16:55.396670-screenshot.png
-2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.5253141522407532, threshold 0.9)
-2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
-2026-09-19 17:17:01 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to 2026-09-19T17:17:01.580807-screenshot.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:35 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-09-20T09-42-35-270184.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-09-20T09-42-35-273075.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-42-35-273604.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-09-20T09-42-35-274040.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-42-35-276126.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-canvas-template_2026-09-20T09-42-35-276505.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-42-35-305931.png
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-42-35-465516.png
+2026-09-20 09:42:42 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.5913194417953491, threshold 0.9)
+2026-09-20 09:42:42 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-20 09:42:42 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-42-42-021031.png
+2026-09-20 09:42:42 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:42 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-42-42-171692.png
+2026-09-20 09:42:46 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.6662541627883911
+2026-09-20 09:42:46 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found shapes captcha box at Box(left=792, top=530, width=409, height=333)
+2026-09-20 09:42:46 | INFO     | tiktok_live_studio_captcha_solver.solver | shapes captcha detected
+2026-09-20 09:42:46 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to cropped-screenshot_2026-09-20T09-42-46-566054.png
+2026-09-20 09:42:46 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-09-20 09:42:46 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): www.sadcaptcha.com:443
+2026-09-20 09:42:48 | DEBUG    | urllib3.connectionpool | https://www.sadcaptcha.com:443 "POST /api/v1/shapes?licenseKey=bdf9faeef37858f86c99089cec4534bc HTTP/1.1" 200 None
+2026-09-20 09:42:48 | DEBUG    | root | Got API response
+2026-09-20 09:42:48 | INFO     | tiktok_live_studio_captcha_solver.solver | got response for shapes captcha: ShapesCaptchaResponse(point_one_proportion_x=0.7640625, point_one_proportion_y=0.8609375, point_two_proportion_x=0.1515625, point_two_proportion_y=0.865625)
+2026-09-20 09:42:48 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 1104.5015625, 816.6921875
+2026-09-20 09:42:48 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked first shape
+2026-09-20 09:42:48 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 853.9890625, 818.253125
+2026-09-20 09:42:48 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked second shape
+2026-09-20 09:42:49 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked confirm button
+2026-09-20 09:42:54 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-42-54-472088.png
+2026-09-20 09:42:54 | DEBUG    | tiktok_live_studio_captcha_solver.vision | applied binary thresholding
+2026-09-20 09:42:54 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-42-54-622591.png
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:38 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.47399526834487915, threshold 0.9)
+2026-09-20 09:44:38 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-20 09:44:38 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:38 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:44 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.4456442594528198, threshold 0.65)
+2026-09-20 09:44:44 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
+2026-09-20 09:44:44 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:44 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-20 09:44:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-20 09:44:58 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-09-20T09-44-58-008612.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-09-20T09-44-58-011716.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-44-58-012784.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-09-20T09-44-58-013228.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-44-58-015978.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-canvas-template_2026-09-20T09-44-58-016363.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-44-58-044482.png
+2026-09-20 09:44:58 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-44-58-202470.png
+2026-09-20 09:45:04 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.507411003112793, threshold 0.9)
+2026-09-20 09:45:04 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-20 09:45:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-45-04-729446.png
+2026-09-20 09:45:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-45-04-879126.png
+2026-09-20 09:45:09 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.6861744523048401
+2026-09-20 09:45:09 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found shapes captcha box at Box(left=793, top=530, width=409, height=333)
+2026-09-20 09:45:09 | INFO     | tiktok_live_studio_captcha_solver.solver | shapes captcha detected
+2026-09-20 09:45:09 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to cropped-screenshot_2026-09-20T09-45-09-279849.png
+2026-09-20 09:45:09 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-09-20 09:45:09 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): www.sadcaptcha.com:443
+2026-09-20 09:45:10 | DEBUG    | urllib3.connectionpool | https://www.sadcaptcha.com:443 "POST /api/v1/shapes?licenseKey=bdf9faeef37858f86c99089cec4534bc HTTP/1.1" 200 None
+2026-09-20 09:45:10 | DEBUG    | root | Got API response
+2026-09-20 09:45:10 | INFO     | tiktok_live_studio_captcha_solver.solver | got response for shapes captcha: ShapesCaptchaResponse(point_one_proportion_x=0.3984375, point_one_proportion_y=0.71875, point_two_proportion_x=0.459375, point_two_proportion_y=0.71875)
+2026-09-20 09:45:10 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 955.9609375, 769.34375
+2026-09-20 09:45:10 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked first shape
+2026-09-20 09:45:11 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 980.884375, 769.34375
+2026-09-20 09:45:11 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked second shape
+2026-09-20 09:45:12 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked confirm button
+2026-09-20 09:45:17 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-45-17-135073.png
+2026-09-20 09:46:42 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-20 09:46:43 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-09-20T09-46-43-122156.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-09-20T09-46-43-125146.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-46-43-126215.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-09-20T09-46-43-126656.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-09-20T09-46-43-129400.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-canvas-template_2026-09-20T09-46-43-129778.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-46-43-157163.png
+2026-09-20 09:46:43 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-46-43-315790.png
+2026-09-20 09:46:49 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.507411003112793, threshold 0.9)
+2026-09-20 09:46:49 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-20 09:46:49 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-09-20T09-46-49-838045.png
+2026-09-20 09:46:50 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-09-20T09-46-49-982311.png
+2026-09-20 09:46:55 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.6861744523048401
+2026-09-20 09:46:55 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found shapes captcha box at Box(left=793, top=530, width=330, height=268)
+2026-09-20 09:46:55 | INFO     | tiktok_live_studio_captcha_solver.solver | shapes captcha detected
+2026-09-20 09:46:55 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to cropped-screenshot_2026-09-20T09-46-55-512694.png
+2026-09-20 09:46:55 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-09-20 09:46:55 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): www.sadcaptcha.com:443
+2026-09-20 09:46:58 | DEBUG    | urllib3.connectionpool | https://www.sadcaptcha.com:443 "POST /api/v1/shapes?licenseKey=bdf9faeef37858f86c99089cec4534bc HTTP/1.1" 200 None
+2026-09-20 09:46:58 | DEBUG    | root | Got API response
+2026-09-20 09:46:58 | INFO     | tiktok_live_studio_captcha_solver.solver | got response for shapes captcha: ShapesCaptchaResponse(point_one_proportion_x=0.2078125, point_one_proportion_y=0.396875, point_two_proportion_x=0.59375, point_two_proportion_y=0.2890625)
+2026-09-20 09:46:58 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 861.578125, 636.3625
+2026-09-20 09:46:58 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked first shape
+2026-09-20 09:46:59 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 988.9375, 607.46875
+2026-09-20 09:46:59 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked second shape
+2026-09-20 09:46:59 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked confirm button
