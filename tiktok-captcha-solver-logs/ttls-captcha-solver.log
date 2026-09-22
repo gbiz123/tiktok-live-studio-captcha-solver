@@ -236,3 +236,51 @@
 2026-09-20 09:48:30 | INFO     | tiktok_live_studio_captcha_solver.solver | solved puzzle captcha
 2026-09-20 09:48:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
 2026-09-20 09:48:35 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:20 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | log directories already exist
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:24 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:31 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.507411003112793, threshold 0.9)
+2026-09-22 04:49:31 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-22 04:49:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:31 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:37 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.6861744523048401
+2026-09-22 04:49:37 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found shapes captcha box at Box(left=1752, top=698, width=330, height=268)
+2026-09-22 04:49:37 | INFO     | tiktok_live_studio_captcha_solver.solver | shapes captcha detected
+2026-09-22 04:49:37 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:37 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-09-22 04:49:37 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): www.sadcaptcha.com:443
+2026-09-22 04:49:38 | DEBUG    | urllib3.connectionpool | https://www.sadcaptcha.com:443 "POST /api/v1/shapes?licenseKey=bdf9faeef37858f86c99089cec4534bc HTTP/1.1" 200 None
+2026-09-22 04:49:38 | DEBUG    | root | Got API response
+2026-09-22 04:49:38 | INFO     | tiktok_live_studio_captcha_solver.solver | got response for shapes captcha: ShapesCaptchaResponse(point_one_proportion_x=0.2078125, point_one_proportion_y=0.396875, point_two_proportion_x=0.59375, point_two_proportion_y=0.2890625)
+2026-09-22 04:49:38 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 1820.578125, 804.3625
+2026-09-22 04:49:38 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked first shape
+2026-09-22 04:49:39 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked at 1947.9375, 775.46875
+2026-09-22 04:49:39 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked second shape
+2026-09-22 04:49:39 | INFO     | tiktok_live_studio_captcha_solver.solver | clicked confirm button
+2026-09-22 04:49:44 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:44 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:49 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.5150583386421204, threshold 0.9)
+2026-09-22 04:49:49 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-22 04:49:49 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:49 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:54 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.4951942265033722, threshold 0.65)
+2026-09-22 04:49:54 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.SHAPES captcha not found
+2026-09-22 04:49:54 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:54 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:59 | DEBUG    | tiktok_live_studio_captcha_solver.vision | Could not find template on image (confidence was 0.5150583982467651, threshold 0.9)
+2026-09-22 04:49:59 | DEBUG    | tiktok_live_studio_captcha_solver.solver | CaptchaType.PUZZLE captcha not found
+2026-09-22 04:49:59 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
+2026-09-22 04:49:59 | DEBUG    | tiktok_live_studio_captcha_solver.logs | not logging image. To log images, set IS_LOGGING_IMAGES=1 environment variable.
