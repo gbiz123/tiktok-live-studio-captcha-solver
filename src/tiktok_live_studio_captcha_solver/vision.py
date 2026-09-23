@@ -105,8 +105,8 @@ log_image(Image.fromarray(PUZZLE_CANVAS_TEMPLATE), f"puzzle-canvas-template.png"
 def scale_invariant_template_match(
     mat: cv2.typing.MatLike,
     template: cv2.typing.MatLike,
-    scale_factor: float = 0.5,
-    scale_step: float = 0.01,
+    scale_factor: float = 0.3,
+    scale_step: float = 0.1,
     mask: cv2.typing.MatLike | None = None,
     threshold: float | None = None
 ) -> tuple[cv2.typing.MatLike, float]:

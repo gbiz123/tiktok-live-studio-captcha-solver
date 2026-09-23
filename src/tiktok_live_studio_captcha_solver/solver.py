@@ -31,19 +31,32 @@ def prompt_api_key() -> str:
         api_key = input("Please enter your SadCaptcha API key (You can also set the SADCAPTCHA_API_KEY environment variable): ")
     return api_key
 
+def move_mouse_human(x_loc: float, y_loc: float) -> None:
+    duration = random.uniform(0.5, 1.5)
+    pyautogui.moveTo(
+        x_loc,
+        y_loc,
+        duration=duration,
+        tween=pyautogui.easeInOutQuad
+    )
+
 def click_proportional_point_inside_area(
     proportion_x: float,
     proportion_y: float,
     area_width: int,
     area_height: int,
     offset_x: int,
-    offset_y: int
+    offset_y: int,
+    human: bool = True
 ) -> None:
     """Click a proportional point within a given area on the screen. The X value where the
-    click occurs is calculated as: (area_width*proportion_x)+offset_x
+    click occurs is calculated as: (area_width*proportion_x)+offset_
     The Y value where the click occurs is calculated as: (area_height*proportion_y)+offset_y """
     x_loc = (area_width * proportion_x) + offset_x
     y_loc = (area_height * proportion_y) + offset_y
+    if human:
+        move_mouse_human(x_loc, y_loc)
+        time.sleep(random.random() * 0.5)
     pyautogui.click(x_loc, y_loc)
     LOGGER.info(f"clicked at {x_loc}, {y_loc}")
 
@@ -119,7 +132,7 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
         shapes_captcha_box.top
     )
     LOGGER.info("clicked first shape")
-    time.sleep(0.5)
+    time.sleep(random.random() * 0.5)
     click_proportional_point_inside_area(
         resp.point_two_proportion_x,
         resp.point_two_proportion_y,
@@ -130,10 +143,13 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
     )
     LOGGER.info("clicked second shape")
     # Click confirm button
-    time.sleep(0.5)
+    time.sleep(random.random() * 0.5)
+    btn_x_loc = shapes_captcha_box.left + (shapes_captcha_box.width / 2)
+    btn_y_loc = shapes_captcha_box.top + (shapes_captcha_box.height - 15)
+    move_mouse_human(btn_x_loc, btn_y_loc)
     pyautogui.click(
-        shapes_captcha_box.left + (shapes_captcha_box.width / 2),
-        shapes_captcha_box.top + (shapes_captcha_box.height - 15)
+        btn_x_loc,
+        btn_y_loc
     )
     LOGGER.info("clicked confirm button")
     time.sleep(5)
