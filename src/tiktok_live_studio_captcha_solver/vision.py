@@ -166,7 +166,7 @@ def find_shapes_captcha_box(
         mat,
         SHAPES_TEMPLATE,
         mask=SHAPES_TEMPLATE_MASK,
-        threshold=0.65
+        threshold=0.60
     )
 
     w, h = SHAPES_TEMPLATE.shape[::-1]

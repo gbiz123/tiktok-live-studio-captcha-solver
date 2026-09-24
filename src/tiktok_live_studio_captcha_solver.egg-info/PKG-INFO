@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: tiktok-live-studio-captcha-solver
-Version: 0.0.10
+Version: 0.0.11
 Summary: This package solves TikTok Live Studio captcha in one line of code.
 Author-email: Toughdata LLC <greg@toughdata.net>
 Project-URL: Homepage, https://www.sadcaptcha.com
@@ -26,5 +26,42 @@ If you have two or monitors, this tool will not work unless you adjust your setu
 `pip install tiktok-live-studio-captcha-solver`
 
 ## Usage
-Run `python -m tiktok_live_studio_captcha_solver` in your terminal.
-Now, tiktok live studio captchas will be solved automatically.
+This tool uses `pyautogui` to take screenshots and to move and click the mouse.
+On Windows and macOS, the operating system blocks those actions unless the terminal you launch from has
+been granted the right permissions, so follow the steps for your OS below.
+If the permissions are missing, the solver usually appears to run fine but the clicks silently do nothing,
+or the screenshots come back blank/black.
+
+### Windows
+1. Press the Start button and type `cmd` (or `powershell`).
+2. Right click the result and choose **Run as administrator**, then accept the UAC prompt.
+3. In that administrator terminal, run:
+   ```
+   python -m tiktok_live_studio_captcha_solver
+   ```
+
+### macOS
+macOS requires you to explicitly allow the terminal app to control the mouse and to record the screen:
+
+1. Open **System Settings → Privacy & Security → Accessibility** and enable your terminal app
+   (Terminal, iTerm2, VS Code, etc.). Use the `+` button to add it if it is not listed.
+2. Open **System Settings → Privacy & Security → Screen Recording** and enable the same app.
+3. Quit and reopen the terminal app completely — the new permissions only apply to a freshly launched process.
+4. Run:
+   ```
+   python -m tiktok_live_studio_captcha_solver
+   ```
+
+The first time the solver takes a screenshot or moves the mouse, macOS may show a permission prompt.
+Approve it, then restart the terminal and run the command again.
+
+### Linux
+No special permissions are needed. Make sure `gnome-screenshot` is installed, then run:
+```
+python -m tiktok_live_studio_captcha_solver
+```
+If you are on Wayland, run your session under X11 instead — `pyautogui` cannot move the mouse or capture
+the screen under Wayland.
+
+Once the solver is running, TikTok Live Studio captchas will be solved automatically. Leave the terminal
+window open while you stream.
