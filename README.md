@@ -60,4 +60,5 @@ You may set the log level at runtime with the LOG_LEVEL environment variable.
 For example, to set to INFO you would want to set `LOG_LEVEL=INFO` when you run the program.
 You can also enable image logging by setting `LOG_IMAGES=true` when you run the program.
 
+## Support us
 <a href="https://www.buymeacoffee.com/gbiz123" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
