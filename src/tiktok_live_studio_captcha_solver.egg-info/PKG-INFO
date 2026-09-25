@@ -65,3 +65,8 @@ the screen under Wayland.
 
 Once the solver is running, TikTok Live Studio captchas will be solved automatically. Leave the terminal
 window open while you stream.
+
+## Logging
+You may set the log level at runtime with the LOG_LEVEL environment variable.
+For example, to set to INFO you would want to set `LOG_LEVEL=INFO` when you run the program.
+You can also enable image logging by setting `LOG_IMAGES=true` when you run the program.
