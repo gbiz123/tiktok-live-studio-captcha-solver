@@ -8,6 +8,7 @@ import cv2
 from pyscreeze import Box, screenshot
 import numpy as np
 
+from tiktok_live_studio_captcha_solver.captchatype import CaptchaType
 from tiktok_live_studio_captcha_solver.logs import log_image
 
 from .exceptions import TemplateMatchNotFound
@@ -301,3 +302,44 @@ def draw_over_piece(
     )
     LOGGER.debug("drew rectangle over piece")
     return puzzle_copy
+
+def identify_captcha(
+    screenshot: Image.Image,
+    threshold: float = 0.60
+) -> CaptchaType | None:
+    processed_screenshot = sobel(cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY))
+
+    # Get the max val for puzzle template
+    puzzle_res, _ = scale_invariant_template_match(
+        processed_screenshot,
+        PUZZLE_TEMPLATE,
+        mask=PUZZLE_TEMPLATE_MASK,
+        threshold=None
+    )
+    _, max_puzzle, _, _ = cv2.minMaxLoc(puzzle_res)
+
+    # Get the max val for shapes template
+    shapes_res, _ = scale_invariant_template_match(
+        processed_screenshot,
+        SHAPES_TEMPLATE,
+        mask=SHAPES_TEMPLATE_MASK,
+        threshold=None
+    )
+    _, max_shapes, _, _ = cv2.minMaxLoc(shapes_res)
+
+
+    # Get the best match above threshold
+    if not any(
+        [
+            max_shapes > threshold,
+            max_puzzle > threshold
+        ]
+    ):
+        LOGGER.debug("no captcha found")
+    elif max_shapes > max_puzzle:
+        LOGGER.debug("shapes captcha found")
+        return CaptchaType.SHAPES
+    else:
+        LOGGER.debug("puzzle captcha found")
+        return CaptchaType.PUZZLE
+

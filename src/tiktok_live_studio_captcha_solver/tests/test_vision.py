@@ -1,6 +1,8 @@
 from PIL import Image
 
-from ..vision import draw_over_piece, extract_piece_from_puzzle, extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box
+from tiktok_live_studio_captcha_solver.captchatype import CaptchaType
+
+from ..vision import draw_over_piece, extract_piece_from_puzzle, extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box, identify_captcha
 
 def test_find_shapes_captcha_box():
     img = Image.open("./images/image1.png") 
@@ -39,3 +41,16 @@ def test_draw_over_piece():
     canvas = extract_puzzle_canvas(img)
     drawn = draw_over_piece(canvas)
     drawn.save("./images/test_draw_rectangle.png")
+
+def test_identify_shapes():
+    img = Image.open("./images/image1.png") 
+    assert identify_captcha(img) == CaptchaType.SHAPES
+
+def test_identify_puzzle():
+    img = Image.open("./images/puzzle_slide.png")
+    assert identify_captcha(img) == CaptchaType.PUZZLE
+
+def test_identify_nothing():
+    img = Image.open("./images/unrelated.png")
+    assert identify_captcha(img) is None
+

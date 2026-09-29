@@ -21,7 +21,7 @@ from pyscreeze import Box
 
 from .captchatype import CaptchaType
 from .api import ApiClient
-from .vision import draw_over_piece, extract_piece_from_puzzle, extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box
+from .vision import draw_over_piece, extract_piece_from_puzzle, extract_puzzle_canvas, find_puzzle_captcha_box, find_shapes_captcha_box, find_slide_button_box, identify_captcha
 
 LOGGER = logging.getLogger(__name__)
 
@@ -156,21 +156,23 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
 
 def solve_loop(api_client: ApiClient):
     while True:
-        for captcha_type in CaptchaType:
-            try:
-                match(captcha_type):
-                    case CaptchaType.SHAPES:
-                        solve_shapes_captcha(api_client)
-                    case CaptchaType.PUZZLE:
-                        solve_puzzle_captcha(api_client)
-            except TemplateMatchNotFound as e:
-                LOGGER.debug(f"{captcha_type} captcha not found")
-            except Exception as e:
-                LOGGER.error(
-                    "unexpected exception occurred during solve loop: " + str(e),
-                    exc_info=True,
-                    stack_info=True
-                )
+        try:
+            screenshot = pyautogui.screenshot()
+            log_image(screenshot, "screenshot.png")
+            captcha_type = identify_captcha(screenshot)
+            match(captcha_type):
+                case CaptchaType.SHAPES:
+                    solve_shapes_captcha(api_client)
+                case CaptchaType.PUZZLE:
+                    solve_puzzle_captcha(api_client)
+                case CaptchaType.ROTATE:
+                    LOGGER.warning("ROTATE captcha is not supported at the moment")
+        except Exception as e:
+            LOGGER.error(
+                "unexpected exception occurred during solve loop: " + str(e),
+                exc_info=True,
+                stack_info=True
+            )
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
