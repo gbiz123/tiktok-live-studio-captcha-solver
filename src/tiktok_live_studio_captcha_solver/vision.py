@@ -195,7 +195,7 @@ def find_puzzle_captcha_box(
         mat,
         PUZZLE_TEMPLATE,
         mask=PUZZLE_TEMPLATE_MASK,
-        threshold=0.9
+        threshold=0.6
     )
 
     w, h = PUZZLE_TEMPLATE.shape[::-1]
@@ -222,7 +222,7 @@ def find_slide_button_box(
     res, scale = scale_invariant_template_match(
         mat,
         SLIDE_BUTTON_TEMPLATE,
-        threshold=0.9
+        threshold=None
     )
 
     w, h = SLIDE_BUTTON_TEMPLATE.shape[::-1]
@@ -254,7 +254,7 @@ def extract_puzzle_canvas(
         mat_sobel,
         PUZZLE_CANVAS_TEMPLATE,
         mask=PUZZLE_CANVAS_TEMPLATE_MASK,
-        threshold=0.9
+        threshold=None
     )
 
     w, h = PUZZLE_CANVAS_TEMPLATE.shape[::-1]

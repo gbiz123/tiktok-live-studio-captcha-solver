@@ -160,6 +160,9 @@ def solve_loop(api_client: ApiClient):
             screenshot = pyautogui.screenshot()
             log_image(screenshot, "screenshot.png")
             captcha_type = identify_captcha(screenshot)
+            if captcha_type is None:
+                LOGGER.debug("no captcha present")
+                continue
             match(captcha_type):
                 case CaptchaType.SHAPES:
                     solve_shapes_captcha(api_client)
@@ -167,6 +170,8 @@ def solve_loop(api_client: ApiClient):
                     solve_puzzle_captcha(api_client)
                 case CaptchaType.ROTATE:
                     LOGGER.warning("ROTATE captcha is not supported at the moment")
+                case CaptchaType.ICON:
+                    LOGGER.warning("ICON captcha is not supported at the moment")
         except Exception as e:
             LOGGER.error(
                 "unexpected exception occurred during solve loop: " + str(e),
