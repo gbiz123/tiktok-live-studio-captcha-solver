@@ -106,15 +106,16 @@ log_image(Image.fromarray(PUZZLE_CANVAS_TEMPLATE), f"puzzle-canvas-template.png"
 def scale_invariant_template_match(
     mat: cv2.typing.MatLike,
     template: cv2.typing.MatLike,
-    scale_factor: float = 0.3,
-    scale_step: float = 0.1,
+    scale_factor_shrink: float = 0.1,
+    scale_factor_grow: float = 0.3,
+    scale_step: float = 0.025,
     mask: cv2.typing.MatLike | None = None,
     threshold: float | None = None
 ) -> tuple[cv2.typing.MatLike, float]:
     """Perform scale invariant template matching returning (mat, scale) tuple"""
-    start = 1.0 - scale_factor
+    start = 1.0 - scale_factor_shrink
     start = 1.0
-    end = 1.0 + scale_factor
+    end = 1.0 + scale_factor_grow
     best_val = -1
     best_res = None
     best_scale = -1
@@ -149,7 +150,7 @@ def scale_invariant_template_match(
         msg = f"Could not find template on image (confidence was {best_val}, threshold {threshold})"
         LOGGER.debug(msg)
         raise TemplateMatchNotFound(msg)
-    LOGGER.debug("found best matching location for template, with confidence " + str(best_val))
+    LOGGER.debug("found best matching location for template, with confidence " + str(best_val) + " and scale " + str(best_scale))
     return best_res, best_scale
 
 

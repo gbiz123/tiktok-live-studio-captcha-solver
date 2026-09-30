@@ -10,12 +10,13 @@ LOGGER = logging.getLogger(__name__)
 IS_LOGGING_IMAGES = bool(os.environ.get("LOG_IMAGES"))
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 
-logging.basicConfig(
-    level=int(getattr(logging, LOG_LEVEL)),
-    filename=os.path.join(LOGS_DIR, "ttls-captcha-solver.log"),
-    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
+def config_logger():
+    logging.basicConfig(
+        level=int(getattr(logging, LOG_LEVEL)),
+        filename=os.path.join(LOGS_DIR, "ttls-captcha-solver.log"),
+        format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
 def initialize_log_dir():
     if not os.path.isdir(LOGS_DIR):
