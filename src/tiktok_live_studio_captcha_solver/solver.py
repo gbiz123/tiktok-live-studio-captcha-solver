@@ -75,7 +75,9 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
     )
     log_image(cropped_screenshot, "cropped-screenshot.png")
     puzzle_canvas = extract_puzzle_canvas(cropped_screenshot)
+    log_image(puzzle_canvas, "puzzle_canvas_extracted.png")
     piece = extract_piece_from_puzzle(puzzle_canvas)
+    log_image(piece, "puzzle_piece_extracted.png")
     puzzle_modified = draw_over_piece(puzzle_canvas)
     piece_b64 = pil_to_b64_string(piece)
     puzzle_b64 = pil_to_b64_string(puzzle_modified)
@@ -85,21 +87,33 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
     # Determine distance needed to drag slider
     distance = int(resp.slide_x_proportion * puzzle_canvas.width)
     button = find_slide_button_box(screenshot)
+
+    # The width of the puzzle slide must be accounted for, since we 
+    # start the drag from 1/2 width 
     start_x = button.left + (button.width / 2)
     start_y = button.top  + (button.height / 2)
     end_x = start_x + distance
+
     pyautogui.moveTo(start_x, start_y)
     time.sleep(0.2)
     pyautogui.mouseDown(start_x, start_y)
     time.sleep(0.5)
     overshoot = 15
-    for i in range(0, distance + overshoot, 5):
-        if random.random() > 0.35:
-            x_adjust = random.randint(0, 4)
-            y_adjust = (random.random() - 1) * 2
-            pyautogui.moveTo(start_x + i + x_adjust, start_y + y_adjust)
-    for i in range(0, overshoot, 3):
-        pyautogui.moveTo(end_x + overshoot - i, start_y)
+    duration = (random.random() * 1.0) + 1.5
+    pyautogui.moveTo(
+        end_x + overshoot,
+        start_y + 7,
+        duration=duration, 
+        tween=pyautogui.easeInOutQuad
+    )
+    time.sleep(random.random())
+    pyautogui.moveTo(
+        end_x,
+        start_y,
+        duration=duration, 
+        tween=pyautogui.easeInOutQuad
+    )
+    time.sleep(random.random())
     pyautogui.mouseUp(end_x, start_y)
     LOGGER.info("solved puzzle captcha")
     time.sleep(5)

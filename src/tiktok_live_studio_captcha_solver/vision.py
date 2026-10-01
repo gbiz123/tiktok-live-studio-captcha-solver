@@ -276,9 +276,9 @@ def extract_piece_from_puzzle(
 ) -> Image.Image:
     cropped = puzzle_image.crop(
         (
-            10,
-            10,
-            puzzle_image.width * 0.2,
+            0,
+            0,
+            puzzle_image.width * 0.25,
             puzzle_image.height - 10
         )
     )
