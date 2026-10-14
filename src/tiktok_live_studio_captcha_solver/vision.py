@@ -52,27 +52,95 @@ IMAGE_PATHS = {
     },
     "slide_button": {
         "img_path":  os.path.join(MODULE_DIR, "resources/slide_button_template.png"),
-        "mask_path": os.path.join(MODULE_DIR, "resources/slide_button_template_mask.png")
+        "mask_path": None
     }
 }
 
-IMAGES: dict[str, dict[str, cv2.typing.MatLike]] = {}
+IMAGES: dict[str, dict[str, cv2.typing.MatLike | None]] = {}
 
 for k, v in IMAGE_PATHS.items():
-    img = cv2.imread(v["img_path"], cv2.IMREAD_GRAYSCALE)
-    if img is None:
-        raise ValueError("no image found at path: " + v["img_path"])
-    mask = cv2.imread(v["mask_path"], cv2.IMREAD_GRAYSCALE)
-    if mask is None:
-        raise ValueError("no mask found at path: " + v["mask_path"])
+    img_path = v["img_path"]
+    if img_path is not None:
+        img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+        if img is None:
+            raise ValueError("no image found at path: " + img_path)
+    else:
+            raise ValueError("img_path cannt be none")
+    mask_path = v["mask_path"]
+    if mask_path is not None:
+        mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+        if mask is None:
+            raise ValueError("no mask found at path: " + mask_path)
+    else:
+        mask = None
     IMAGES[k] = {
         "image": sobel(img),
         "mask": mask
     }
 
 for name, entry in IMAGES.items():
-    log_image(Image.fromarray(entry["mask"]), f"{name}-template-mask.png")
-    log_image(Image.fromarray(entry["image"]), f"{name}-template.png")
+    if entry["mask"] is not None:
+        log_image(Image.fromarray(entry["mask"]), f"{name}-template-mask.png")
+    if entry["image"] is not None:
+        log_image(Image.fromarray(entry["image"]), f"{name}-template.png")
+
+def scale_invariant_multi_template_match(
+    mat: cv2.typing.MatLike,
+    template_and_masks: list[dict[str, cv2.typing.MatLike | None]],
+    scale_factor_shrink: float = 0.1,
+    scale_factor_grow: float = 0.3,
+    scale_step: float = 0.020,
+    threshold: float | None = None
+) -> tuple[cv2.typing.MatLike, float, cv2.typing.MatLike]:
+    """Perform scale invariant template matching returning (mat, scale, template) tuple
+
+    Gets the best match of the entire list of template and masks, where
+    template_and_mask is dictionary like {image: cv2 image, mask: cv2 image or None}
+    """
+    start = 1.0
+    end = 1.0 + scale_factor_grow
+    best_val = -1
+    best_res = None
+    best_scale = -1
+    best_template = None
+    for temp_mask in template_and_masks:
+        template = temp_mask["image"]
+        if template is None:
+            raise ValueError("template cannot be none")
+        mask = temp_mask["mask"]
+        for scale in np.arange(start, end, scale_step):
+            height, width = template.shape[0:2]
+            resized_template = cv2.resize(template, (int(width*scale), int(height*scale)))
+            if mask is not None:
+                resized_mask = cv2.resize(mask, (int(width*scale), int(height*scale)))
+            else:
+                resized_mask = None
+            try:
+                res = cv2.matchTemplate(
+                    mat,
+                    resized_template,
+                    cv2.TM_CCORR_NORMED,
+                    mask=resized_mask
+                )
+                res[np.isinf(res)] = 0.0
+                res[np.isnan(res)] = 0.0
+                min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+                if max_val > best_val:
+                    best_val = max_val
+                    best_res = res
+                    best_scale = scale
+                    best_template = template
+            except cv2.error as e:
+                LOGGER.debug(f"failed template match at scale {scale} due to opencv error - {str(e)}")
+    if best_res is None or best_template is None:
+        raise ValueError("Could not find best result for scale invariant template match - best_res was None")
+    if threshold is not None \
+            and best_val < threshold:
+        msg = f"Could not find template on image (confidence was {best_val}, threshold {threshold})"
+        LOGGER.debug(msg)
+        raise TemplateMatchNotFound(msg)
+    LOGGER.debug("found best matching location for template, with confidence " + str(best_val) + " and scale " + str(best_scale))
+    return best_res, best_scale, best_template
 
 
 def scale_invariant_template_match(
@@ -159,19 +227,17 @@ def find_puzzle_captcha_box(
     screenshot: Image.Image
 ) -> Box:
     """Find the area of the puzzle captcha image as PIL image as a pyscreeze box"""
-
-    template = IMAGES["puzzle"]["image"]
-    mask = IMAGES["puzzle"]["mask"]
-
     mat = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY)
-    mat = sobel(mat)
-    log_image(Image.fromarray(mat), "screenshot-processed.png")
+    mat_sobel = sobel(mat)
+    log_image(Image.fromarray(mat_sobel), "screenshot-processed.png")
 
-    res, scale = scale_invariant_template_match(
-        mat,
-        template,
-        mask=mask,
-        threshold=0.6
+    res, scale, template = scale_invariant_multi_template_match(
+        mat_sobel,
+        [
+            IMAGES["puzzle"],
+            IMAGES["puzzle_large"],
+        ],
+        threshold=None
     )
 
     w, h = template.shape[::-1]
@@ -227,16 +293,15 @@ def extract_puzzle_canvas(
         screenshot: PIL image of the entire screen
         puzzle_captcha_box: Box containing the bounds of the entire puzzle captcha (extracted with find_puzzle_captcha_box)
     """
-    template = IMAGES["puzzle_canvas"]["image"]
-    mask = IMAGES["puzzle_canvas"]["mask"]
-
     mat = np.array(screenshot)
     mat_sobel = cv2.cvtColor(sobel(mat), cv2.COLOR_RGB2GRAY)
 
-    res, scale = scale_invariant_template_match(
+    res, scale, template = scale_invariant_multi_template_match(
         mat_sobel,
-        template,
-        mask=mask,
+        [
+            IMAGES["puzzle_canvas"],
+            IMAGES["puzzle_canvas_large"],
+        ],
         threshold=None
     )
 
@@ -294,10 +359,12 @@ def identify_captcha(
 ) -> CaptchaType | None:
     processed_screenshot = sobel(cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2GRAY))
 
-    puzzle_res, _ = scale_invariant_template_match(
+    puzzle_res, _, _ = scale_invariant_multi_template_match(
         processed_screenshot,
-        IMAGES["puzzle"]["image"],
-        mask=IMAGES["puzzle"]["mask"],
+        [
+            IMAGES["puzzle"],
+            IMAGES["puzzle_large"],
+        ],
         threshold=None
     )
     _, max_puzzle, _, _ = cv2.minMaxLoc(puzzle_res)
