@@ -1,3 +1,4 @@
+import sys
 from datetime import datetime
 import logging
 import os
@@ -13,9 +14,12 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 def config_logger():
     logging.basicConfig(
         level=int(getattr(logging, LOG_LEVEL)),
-        filename=os.path.join(LOGS_DIR, "ttls-captcha-solver.log"),
         format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[
+            logging.FileHandler(os.path.join(LOGS_DIR, "ttls-captcha-solver.log")),
+            logging.StreamHandler(sys.stdout),
+        ],
     )
 
 def initialize_log_dir():

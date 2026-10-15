@@ -8,6 +8,7 @@ src/tiktok_live_studio_captcha_solver/exceptions.py
 src/tiktok_live_studio_captcha_solver/image_io.py
 src/tiktok_live_studio_captcha_solver/logs.py
 src/tiktok_live_studio_captcha_solver/models.py
+src/tiktok_live_studio_captcha_solver/scale_fix.py
 src/tiktok_live_studio_captcha_solver/solver.py
 src/tiktok_live_studio_captcha_solver/system.py
 src/tiktok_live_studio_captcha_solver/vision.py

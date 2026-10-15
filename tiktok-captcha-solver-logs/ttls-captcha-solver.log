@@ -707,3 +707,119 @@
 2026-10-14 05:43:42 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.9085330963134766 and scale 1.2600000000000002
 2026-10-14 05:43:42 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found slide button box at Box(left=786, top=918, width=99, height=60)
 2026-10-14 05:43:49 | INFO     | tiktok_live_studio_captcha_solver.solver | solved puzzle captcha
+2026-10-15 08:25:00 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-10-15T08-25-00-728413.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-10-15T08-25-00-730923.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template-mask_2026-10-15T08-25-00-731677.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template_2026-10-15T08-25-00-731894.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template-mask_2026-10-15T08-25-00-733323.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template_2026-10-15T08-25-00-733592.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-10-15T08-25-00-735896.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-10-15T08-25-00-736112.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template-mask_2026-10-15T08-25-00-737651.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template_2026-10-15T08-25-00-737958.png
+2026-10-15 08:25:00 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to slide_button-template_2026-10-15T08-25-00-740427.png
+2026-10-15 08:25:04 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-10-15T08-25-04-716852.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-10-15T08-25-04-720031.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template-mask_2026-10-15T08-25-04-721103.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template_2026-10-15T08-25-04-721428.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template-mask_2026-10-15T08-25-04-723387.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template_2026-10-15T08-25-04-723789.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-10-15T08-25-04-726825.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-10-15T08-25-04-727139.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template-mask_2026-10-15T08-25-04-729261.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template_2026-10-15T08-25-04-729728.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to slide_button-template_2026-10-15T08-25-04-732244.png
+2026-10-15 08:25:04 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-25-04-754238.png
+2026-10-15 08:25:08 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.5211093425750732 and scale 1.04
+2026-10-15 08:25:10 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.48451417684555054 and scale 1.2400000000000002
+2026-10-15 08:25:10 | DEBUG    | tiktok_live_studio_captcha_solver.vision | no captcha found
+2026-10-15 08:25:10 | DEBUG    | tiktok_live_studio_captcha_solver.solver | no captcha present
+2026-10-15 08:25:10 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-25-10-651403.png
+2026-10-15 08:25:14 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.8053960204124451 and scale 1.0
+2026-10-15 08:25:16 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.4684376120567322 and scale 1.3000000000000003
+2026-10-15 08:25:16 | DEBUG    | tiktok_live_studio_captcha_solver.vision | puzzle captcha found
+2026-10-15 08:25:16 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-25-16-459698.png
+2026-10-15 08:25:16 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-processed_2026-10-15T08-25-16-562415.png
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.8053960204124451 and scale 1.0
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found puzzle captcha box at Box(left=935, top=619, width=362, height=290)
+2026-10-15 08:25:19 | INFO     | tiktok_live_studio_captcha_solver.solver | puzzle captcha detected
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to cropped-screenshot_2026-10-15T08-25-19-632930.png
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2400000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2600000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2800000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.3000000000000003 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.02 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.04 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.06 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.08 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.1 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.12 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.1400000000000001 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.1600000000000001 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.1800000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2000000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2200000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2400000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2600000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.2800000000000002 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | failed template match at scale 1.3000000000000003 due to opencv error - OpenCV(5.0.0) /io/opencv/modules/imgproc/src/templmatch.cpp:767: error: (-215:Assertion failed) _img.size().height >= _templ.size().height && _img.size().width >= _templ.size().width in function 'matchTemplateMask'
+
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.7550352215766907 and scale 1.0
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | extracted puzzle canvas from image
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_extracted_2026-10-15T08-25-19-665309.png
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | cropped PIL image
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_piece_extracted_2026-10-15T08-25-19-672639.png
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.vision | drew rectangle over piece
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-10-15 08:25:19 | DEBUG    | tiktok_live_studio_captcha_solver.image_io | converted PIL image to base64 string
+2026-10-15 08:25:19 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): www.sadcaptcha.com:443
+2026-10-15 08:25:21 | DEBUG    | urllib3.connectionpool | https://www.sadcaptcha.com:443 "POST /api/v1/puzzle?licenseKey=bdf9faeef37858f86c99089cec4534bc HTTP/1.1" 200 None
+2026-10-15 08:25:21 | DEBUG    | root | Got API response
+2026-10-15 08:25:21 | INFO     | tiktok_live_studio_captcha_solver.solver | got response for puzzle captcha: PuzzleCaptchaResponse(slide_x_proportion=0.5303867403314917)
+2026-10-15 08:25:21 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot-sobel_2026-10-15T08-25-21-259432.png
+2026-10-15 08:25:21 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.908532977104187 and scale 1.2600000000000002
+2026-10-15 08:25:21 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found slide button box at Box(left=934, top=845, width=99, height=60)
+2026-10-15 08:25:27 | INFO     | tiktok_live_studio_captcha_solver.solver | solved puzzle captcha
+2026-10-15 08:58:57 | DEBUG    | PIL.Image | Importing PngImagePlugin
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template-mask_2026-10-15T08-58-57-180029.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to shapes-template_2026-10-15T08-58-57-182335.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template-mask_2026-10-15T08-58-57-183116.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas-template_2026-10-15T08-58-57-183368.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template-mask_2026-10-15T08-58-57-184807.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_canvas_large-template_2026-10-15T08-58-57-185088.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template-mask_2026-10-15T08-58-57-187399.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle-template_2026-10-15T08-58-57-187636.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template-mask_2026-10-15T08-58-57-189185.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to puzzle_large-template_2026-10-15T08-58-57-189520.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to slide_button-template_2026-10-15T08-58-57-192417.png
+2026-10-15 08:58:57 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-58-57-218823.png
+2026-10-15 08:59:01 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.46031805872917175 and scale 1.02
+2026-10-15 08:59:03 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.4888506829738617 and scale 1.02
+2026-10-15 08:59:03 | DEBUG    | tiktok_live_studio_captcha_solver.vision | no captcha found
+2026-10-15 08:59:03 | DEBUG    | tiktok_live_studio_captcha_solver.solver | no captcha present
+2026-10-15 08:59:03 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-59-03-191940.png
+2026-10-15 08:59:07 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.46674057841300964 and scale 1.02
+2026-10-15 08:59:09 | DEBUG    | tiktok_live_studio_captcha_solver.vision | found best matching location for template, with confidence 0.4888506829738617 and scale 1.02
+2026-10-15 08:59:09 | DEBUG    | tiktok_live_studio_captcha_solver.vision | no captcha found
+2026-10-15 08:59:09 | DEBUG    | tiktok_live_studio_captcha_solver.solver | no captcha present
+2026-10-15 08:59:09 | DEBUG    | tiktok_live_studio_captcha_solver.logs | saved image to screenshot_2026-10-15T08-59-09-105443.png
