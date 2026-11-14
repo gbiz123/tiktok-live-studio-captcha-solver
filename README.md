@@ -8,14 +8,23 @@ Now, you can go away from keyboard for extended periods of time without having t
 - An API key from SadCaptcha.com
 
 ## Dual-monitor setup
-This tool uses `pyautogui`, which currently only supports single-monitor setups.
-If you have two or monitors, this tool will not work unless you adjust your setup to only use one monitor.
+On Windows, screenshots cover all connected monitors. LIVE Studio can be on the primary
+or a secondary monitor, including a monitor placed to the left of or above the primary
+display. Screenshot coordinates are translated to desktop coordinates before mouse input.
+Keep the verification window visible and unobstructed, and keep the display arrangement
+unchanged while a verification is being handled.
+
+The existing per-monitor DPI awareness is retained. Mixed-DPI layouts still need validation
+on real hardware, since template matching also depends on the captcha's rendered size.
+macOS and Linux retain the existing screenshot backend; multi-monitor support on those
+platforms is not included in this change.
 
 ## Installation
 `pip install tiktok-live-studio-captcha-solver`
 
 ## Usage
-This tool uses `pyautogui` to take screenshots and to move and click the mouse.
+This tool uses Pillow to capture all monitors on Windows, the existing `pyautogui`
+screenshot backend on other platforms, and `pyautogui` to move and click the mouse.
 On Windows and macOS, the operating system blocks those actions unless the terminal you launch from has
 been granted the right permissions, so follow the steps for your OS below.
 If the permissions are missing, the solver usually appears to run fine but the clicks silently do nothing,

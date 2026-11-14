@@ -6,6 +6,7 @@ from tiktok_live_studio_captcha_solver.logs import log_image
 
 from .exceptions import TemplateMatchNotFound
 from .image_io import pil_to_b64_string
+from .screen import ScreenCapture, capture_screen
 from .system import tkinter_is_installed
 
 if __name__ == "__main__":
@@ -60,8 +61,10 @@ def click_proportional_point_inside_area(
     pyautogui.click(x_loc, y_loc)
     LOGGER.info(f"clicked at {x_loc}, {y_loc}")
 
-def solve_puzzle_captcha(api_client: ApiClient) -> None:
-    screenshot = pyautogui.screenshot()
+def solve_puzzle_captcha(api_client: ApiClient, capture: ScreenCapture | None = None) -> None:
+    if capture is None:
+        capture = capture_screen()
+    screenshot = capture.image
     log_image(screenshot, "screenshot.png")
     puzzle_captcha_box = find_puzzle_captcha_box(screenshot)
     LOGGER.info("puzzle captcha detected")
@@ -90,8 +93,10 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
 
     # The width of the puzzle slide must be accounted for, since we 
     # start the drag from 1/2 width 
-    start_x = button.left + (button.width / 2)
-    start_y = button.top  + (button.height / 2)
+    start_x, start_y = capture.to_desktop(
+        button.left + (button.width / 2),
+        button.top + (button.height / 2)
+    )
     end_x = start_x + distance
 
     pyautogui.moveTo(start_x, start_y)
@@ -119,8 +124,10 @@ def solve_puzzle_captcha(api_client: ApiClient) -> None:
     time.sleep(5)
 
 
-def solve_shapes_captcha(api_client: ApiClient) -> None:
-    screenshot = pyautogui.screenshot()
+def solve_shapes_captcha(api_client: ApiClient, capture: ScreenCapture | None = None) -> None:
+    if capture is None:
+        capture = capture_screen()
+    screenshot = capture.image
     log_image(screenshot, "screenshot.png")
     shapes_captcha_box = find_shapes_captcha_box(screenshot)
     LOGGER.info("shapes captcha detected")
@@ -136,14 +143,17 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
     img_b64 = pil_to_b64_string(cropped_screenshot)
     resp = api_client.shapes(img_b64)
     LOGGER.info("got response for shapes captcha: " + resp.__repr__())
+    desktop_left, desktop_top = capture.to_desktop(
+        shapes_captcha_box.left, shapes_captcha_box.top
+    )
     # Click first point, and then second point
     click_proportional_point_inside_area(
         resp.point_one_proportion_x,
         resp.point_one_proportion_y,
         shapes_captcha_box.width,
         shapes_captcha_box.height,
-        shapes_captcha_box.left,
-        shapes_captcha_box.top
+        desktop_left,
+        desktop_top
     )
     LOGGER.info("clicked first shape")
     time.sleep(random.random() * 0.5)
@@ -152,14 +162,14 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
         resp.point_two_proportion_y,
         shapes_captcha_box.width,
         shapes_captcha_box.height,
-        shapes_captcha_box.left,
-        shapes_captcha_box.top
+        desktop_left,
+        desktop_top
     )
     LOGGER.info("clicked second shape")
     # Click confirm button
     time.sleep(random.random() * 0.5)
-    btn_x_loc = shapes_captcha_box.left + (shapes_captcha_box.width / 2)
-    btn_y_loc = shapes_captcha_box.top + (shapes_captcha_box.height - 15)
+    btn_x_loc = desktop_left + (shapes_captcha_box.width / 2)
+    btn_y_loc = desktop_top + (shapes_captcha_box.height - 15)
     move_mouse_human(btn_x_loc, btn_y_loc)
     pyautogui.click(
         btn_x_loc,
@@ -171,7 +181,8 @@ def solve_shapes_captcha(api_client: ApiClient) -> None:
 def solve_loop(api_client: ApiClient):
     while True:
         try:
-            screenshot = pyautogui.screenshot()
+            capture = capture_screen()
+            screenshot = capture.image
             log_image(screenshot, "screenshot.png")
             captcha_type = identify_captcha(screenshot)
             if captcha_type is None:
@@ -179,9 +190,9 @@ def solve_loop(api_client: ApiClient):
                 continue
             match(captcha_type):
                 case CaptchaType.SHAPES:
-                    solve_shapes_captcha(api_client)
+                    solve_shapes_captcha(api_client, capture)
                 case CaptchaType.PUZZLE:
-                    solve_puzzle_captcha(api_client)
+                    solve_puzzle_captcha(api_client, capture)
                 case CaptchaType.ROTATE:
                     LOGGER.warning("ROTATE captcha is not supported at the moment")
                 case CaptchaType.ICON:
